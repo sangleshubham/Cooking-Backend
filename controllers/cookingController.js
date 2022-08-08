@@ -23,14 +23,38 @@ export async function getRecipe(req , res)  {
     try {
         const recipeID =  req.params.id
         console.log(recipeID)
-        const recipe = await RecipeModel.find({'url' : `/${recipeID}`})
+        const recipe = await RecipeModel.find({'_id' : `${recipeID}`})
         res.send(recipe)
     } catch (error) {
         
     }
-
 }
 
+
+
+
+export  async function getRecipes (req,res) {
+    try {
+        const category  = await RecipeModel.find({})
+        res.send(category)
+        
+    } catch (error) {
+        
+        res.send(constant.Database.failed)
+    }
+}
+
+export async function getSingleCatagory(req , res)  {
+
+    try {
+        const recipeID =  req.params.id
+        console.log(recipeID)
+        const recipe = await RecipeModel.find({'category' : `${recipeID}`})
+        res.send(recipe)
+    } catch (error) {
+        
+    }
+}
 
 export  async function getCategories (req,res) {
     try {
