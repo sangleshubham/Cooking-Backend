@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getHomepage , insertDummyData, getCategories, getRecipe, getRecipes , getSingleCatagory} from '../controllers/cookingController.js'
+import {getHomepage , insertDummyData, getCategories, getRecipe, getRecipes , getSingleCatagory, getSearch} from '../controllers/cookingController.js'
 
 const router = Router()
 
@@ -47,6 +47,14 @@ router.get('/getCategoriesHomepage' , getHomepage)
  * @desc get single recipe
  */
    router.get('/getCatagory/:id' , getSingleCatagory)
+
+
+     /**
+ * @type POST
+ * @route /search
+ * @desc get single recipe
+ */
+      router.post('/search' , getSearch)
 
 
 

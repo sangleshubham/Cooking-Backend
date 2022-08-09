@@ -56,6 +56,8 @@ export async function getSingleCatagory(req , res)  {
     }
 }
 
+
+
 export  async function getCategories (req,res) {
     try {
         const category  = await CatagoryModel.find({})
@@ -64,6 +66,16 @@ export  async function getCategories (req,res) {
     } catch (error) {
         
         res.send(constant.Database.failed)
+    }
+}
+
+export  async function getSearch (req,res) {
+    try {
+        const name =  req.body['search']
+        const recipe = await RecipeModel.find({'Name' : {$regex : `${name}`}})
+        res.send(recipe)
+    } catch (error) {
+        
     }
 }
 
